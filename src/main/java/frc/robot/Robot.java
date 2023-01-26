@@ -24,8 +24,10 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-  WPI_TalonSRX Motor1 = new WPI_TalonSRX(1);
-WPI_TalonSRX Motor2 = new WPI_TalonSRX(2);
+  WPI_TalonSRX rightTop = new WPI_TalonSRX(12);
+WPI_TalonSRX rightBottom = new WPI_TalonSRX(15);
+WPI_TalonSRX leftTop = new WPI_TalonSRX(1);
+WPI_TalonSRX leftBottom = new WPI_TalonSRX(0);
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -85,8 +87,11 @@ WPI_TalonSRX Motor2 = new WPI_TalonSRX(2);
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-  Motor1.set(ControlMode.PercentOutput, 0.2); }
-
+    leftTop.set(ControlMode.PercentOutput, -0.2); 
+    leftBottom.set(ControlMode.PercentOutput, -0.2);
+    rightTop.set(ControlMode.PercentOutput, 0.2);
+    rightBottom.set(ControlMode.PercentOutput, 0.2);
+  }
   /** This function is called once when the robot is disabled. */
   @Override
   public void disabledInit() {}
@@ -102,7 +107,7 @@ WPI_TalonSRX Motor2 = new WPI_TalonSRX(2);
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {}
-}
+
   /** This function is called once when the robot is first started up. */
    @Override
    public void simulationInit() {}
